@@ -135,5 +135,6 @@ def main():
     print("Total time to complete all files: " + time.strftime("%H:%M:%S",time_taken))
     print("\a") # make alert noise
 
+
 if __name__ == "__main__":
     main()
