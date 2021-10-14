@@ -52,18 +52,13 @@ class Transcriber:
                 response = r.recognize_google(data,language=lang)
             except sr.UnknownValueError as e:
                 print(f"UNKNOWN VALUE ERROR {e}")
-                return None
+                return ["NOT UNDERSTOOD",e]
             except sr.RequestError as e:
                 print(f"REQUEST ERROR {e}")
-                return None
+                return ["NO CONNECTION",e]
             except Exception as e:
                 print(f"ERROR FROM GOOGLE {e}")
-                # answer = input('DO YOU WANT TO TRY AGAIN (y) or MOVE ON TO ANOTHER PART OF THE AUDIO (n)?')
-                # if answer.lower().strip() == 'y':
-                #     transcribe_temp_audio_file(file)
-                # # elif answer.lower().strip() == 'n':
-                # else:
-                return None
+                return ["OTHER ERROR",e]
             return response
 
     def write_to_txt(self, txt_file_name,text):
